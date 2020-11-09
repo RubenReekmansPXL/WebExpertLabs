@@ -19,5 +19,4 @@ export class ContactComponent{
     this.service.toggleFavorite(index);
     this.Update.emit();
   }
-
 }
