@@ -1,25 +1,26 @@
+import { Contact } from './models/contact.models';
 import { Component, OnInit } from '@angular/core';
-import {Contact} from './models/contact.models';
+import { ContactService } from './services/contact.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+export class AppComponent implements OnInit {
+  contactList: Contact[];
 
-
-export class AppComponent{
-  contactList: Contact[] = [
-    new Contact('jane doe', 'jane.doe@mail.com', '0113448239', true, 'assets/avatar.png'),
-    new Contact('john doe', 'john.doe@mail.com', '011424839', false, 'assets/avatar.png'),
-    new Contact('Dries Swinnen', 'dries.swinnen@pxl.be', '011664839', true, 'assets/avatar.png')
-  ];
-
-  handleData(event: Contact): void{
-    console.log('Recieved data!', event);
+  constructor(private service: ContactService) { }
+  ngOnInit(): void {
+    this.contactList = this.service.getContactList();
   }
   createContact(event: Contact): void {
-    this.contactList.push(event);
+    this.service.addContact(event);
+    this.contactList = this.service.getContactList();
+  }
+  
+  handleUpdate(): void {
+    this.contactList = this.service.getContactList();
   }
 
 

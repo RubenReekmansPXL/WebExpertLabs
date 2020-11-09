@@ -3,20 +3,25 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
-import {FormsModule} from '@angular/forms';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {ContactService} from './services/contact.service';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactComponent,
-    ContactFormComponent
+    ContactFormComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ContactService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
