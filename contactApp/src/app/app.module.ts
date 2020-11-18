@@ -7,6 +7,7 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ContactService} from './services/contact.service';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -19,7 +20,8 @@ import {ContactService} from './services/contact.service';
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [ContactService],
   bootstrap: [AppComponent]

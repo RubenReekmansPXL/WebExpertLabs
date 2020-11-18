@@ -12,11 +12,9 @@ import {ContactService} from '../services/contact.service';
 export class ContactComponent{
   constructor(private service: ContactService) { }
   @Input() contact: Contact;
-  @Input() index: number;
   @Output() Update: EventEmitter<any> = new EventEmitter();
 
-  toggleFavorite(index: number): void {
-    this.service.toggleFavorite(index);
-    this.Update.emit();
+  toggleFavorite(id: string, isFavorite: boolean): void {
+    this.service.updateContact(id, {isFavorite}).subscribe(() => this.Update.emit());
   }
 }
