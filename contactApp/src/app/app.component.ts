@@ -10,8 +10,8 @@ import { ContactService } from './services/contact.service';
 export class AppComponent implements OnInit {
   contactList: Contact[];
   onlyFavorites = false;
-  service: ContactService;
 
+  constructor(private service: ContactService) {}
 
   ngOnInit(): void {
     this.fetchContactList(this.onlyFavorites);

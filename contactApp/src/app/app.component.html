@@ -1,8 +1,8 @@
 <header><h1>Contacts</h1></header>
 <main>
+  <button type="button" [class.onlyFavorites]="onlyFavorites"
+          (click)="toggleView(onlyFavorites)">Show {{ onlyFavorites ? 'All' : 'Favorites' }}</button>
   <app-contact *ngFor="let contact of contactList; let i = index"
                [contact]="contact" (Update)="handleUpdate()">
   </app-contact>
-  <button type="button" [class.onlyFavorites]="onlyFavorites"
-          (click)="toggleView(onlyFavorites)">Show {{ onlyFavorites ? 'All' : 'Favorites' }}</button>
   <app-contact-form (onSubmit)="createContact($event)"></app-contact-form></main>
